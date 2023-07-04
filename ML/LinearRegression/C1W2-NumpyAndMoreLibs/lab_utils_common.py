@@ -57,9 +57,9 @@ def compute_gradient_matrix(X, y, w, b):
     """
     m,n = X.shape
     f_wb = X @ w + b
-    e   = f_wb - y
-    dj_dw  = (1/m) * (X.T @ e)
-    dj_db  = (1/m) * np.sum(e)
+    e   = f_wb - y # ndarray(m,)
+    dj_dw  = (1/m) * (X.T @ e) # X.T 为转置矩阵(n,m)；dj_dw最终为(n,1)
+    dj_db  = (1/m) * np.sum(e) # b的偏导数刚好为error
 
     return dj_db,dj_dw
 
